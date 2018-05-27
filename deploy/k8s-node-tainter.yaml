@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-tainter
+spec:
+  selector:
+    matchLabels:
+      run: node-tainter
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: node-tainter
+    spec:
+      serviceAccount: test
+      serviceAccountName: test
+      containers:
+      - name: node-tainter
+        image: raymondarias/test-k8s-go:0.0.6
+        ports:
+        - containerPort: 80
